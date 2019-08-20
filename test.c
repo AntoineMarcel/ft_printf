@@ -4,8 +4,8 @@ int main()
 {
 	char i;
 
-	ft_printf("%p", &strlen);
-	printf("%p", &strlen);
+	ft_printf("|%#o|\n", 0);
+	printf("|%#o|\n", 0);
 	
 	return (0);
 }

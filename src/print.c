@@ -52,7 +52,7 @@ void    printdiez(printf_list *list)
             precminl(list);
             list->strprint = ft_strjoin((*list->str != 'X' ? "0x" : "0X"), list->strprint);
         }
-        else if (ft_strchr("o",*list->str) != NULL)
+        else if (ft_strchr("o",*list->str) != NULL && list->strprint[0] != '0')
         {
             list->strprint = ft_strjoin("0", list->strprint);
         }
