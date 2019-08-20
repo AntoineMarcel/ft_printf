@@ -3,9 +3,8 @@
 int main()
 {
 	char i;
-
-ft_printf("%s %d %p %% %x\n", "bonjour ", 42, &free, 42);
-    printf("%s %d %p %% %x\n", "bonjour ", 42, &free, 42);
+	ft_printf("%lu\n",  ULONG_MAX);
+	printf("%lu",  ULONG_MAX);
 	
 	return (0);
 }

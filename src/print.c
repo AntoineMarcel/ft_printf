@@ -40,7 +40,10 @@ void    printplus(printf_list *list)
 void    printspace(printf_list *list)
 {
     if ((ft_strcount(list->options, ' ') >= 1)  && (ft_strchr("di", *list->str) != NULL) && (ft_strchr(list->options,'+') == NULL) && (ft_strchr(list->strprint,'-') == NULL))/*(list->strprint[0] != '-' && list->strprint[0] != '+'))*/
+    {
         ft_putcharf(' ', list);
+        list->minl--;
+    }
 }
 
 void    printdiez(printf_list *list)
@@ -61,6 +64,8 @@ void    printdiez(printf_list *list)
 
 int printoptions(printf_list *list)
 {
+    if (ft_strchr(list->options,' ') != NULL)
+        printspace(list);
     if (ft_strchr(list->options,'#') != NULL)
         printdiez(list);
     if (ft_strchr(list->options,'+') != NULL)
@@ -68,8 +73,6 @@ int printoptions(printf_list *list)
     if (ft_strchr(list->options,'-') != NULL)
         ft_putstrf(list->strprint, list);
     printminl(list);
-    if (ft_strchr(list->options,' ') != NULL)
-        printspace(list);
     if (ft_strchr(list->options,'-') == NULL)
         ft_putstrf(list->strprint, list);
     return(0);

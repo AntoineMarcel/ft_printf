@@ -79,36 +79,32 @@ void ft_read_o(printf_list *list)
 		ft_dectoct(va_arg(list->va, unsigned long long int), list);
 	else if (ft_strcmp(list->lenght,"l") == 0)
 		ft_dectoct(va_arg(list->va, unsigned long int), list);
-    else
-        ft_dectoct(va_arg(list->va, unsigned int), list);
+	else
+		ft_dectoct(va_arg(list->va, unsigned int), list);
 	precint(list);
 }
 
 void ft_read_u(printf_list *list)
 {
-    if (ft_strcmp(list->lenght,"hh") == 0)
-		list->strprint = ft_itoa((unsigned char)va_arg(list->va, unsigned int));
+	if (ft_strcmp(list->lenght,"hh") == 0)
+		list->strprint = ft_uitoa((unsigned char)va_arg(list->va, unsigned int));
 	else if (ft_strcmp(list->lenght,"h") == 0)
-		list->strprint = ft_itoa((unsigned short int)va_arg(list->va, unsigned int));
+		list->strprint = ft_uitoa((unsigned short int)va_arg(list->va, unsigned int));
 	else if (ft_strcmp(list->lenght,"ll") == 0)
-		list->strprint = ft_itoa(va_arg(list->va, unsigned long long int));
+		list->strprint = ft_uitoa(va_arg(list->va, unsigned long long int));
 	else if (ft_strcmp(list->lenght,"l") == 0)
-		list->strprint = ft_itoa(va_arg(list->va, unsigned long int));
-    else
-        list->strprint = ft_itoa(va_arg(list->va, unsigned int));
+		list->strprint = ft_uitoa(va_arg(list->va, unsigned long int));
+	else
+		list->strprint = ft_uitoa(va_arg(list->va, unsigned int));
 	precint(list);
-	
 }
 
 void ft_read_xXp(printf_list *list)
 {
 if (*list->str == 'p')
     {
-            ft_dectohex(va_arg(list->va, unsigned int), list);
-            if (ft_strlen(list->strprint) > 1)
-                list->strprint = ft_strjoin("0x7fff", list->strprint);
-            else if (ft_atoi(list->strprint) == 0)
-                list->strprint = ft_strdup("0x0");
+            ft_dectohex(va_arg(list->va, unsigned long int), list);
+            list->strprint = ft_strjoin("0x", list->strprint);
     }
 	else if (ft_strcmp(list->lenght,"hh") == 0)
 		ft_dectohex((unsigned char)va_arg(list->va, unsigned int), list);

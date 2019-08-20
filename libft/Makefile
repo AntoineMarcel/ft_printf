@@ -56,6 +56,7 @@ SRC = ft_atoi.c\
 	  ft_strtrim.c\
 	  ft_strsplit.c\
 	  ft_itoa.c\
+	  ft_uitoa.c\
 	  ft_putchar.c\
 	  ft_putstr.c\
 	  ft_putendl.c\
