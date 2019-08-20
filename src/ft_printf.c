@@ -87,12 +87,15 @@ int initlist(printf_list *list)
     list->prec = -1;
     list->lenght = "";
     list->str++;
-    ft_parseoption(list);
-    ft_parseminl(list);
-    ft_parseprec(list);
-    ft_parselenght(list);
-    //if (list->prec > 0 || list->prec == -1 || *list->str == '%')
+
+    if (*list->str)
+    { 
+        ft_parseoption(list);
+        ft_parseminl(list);
+        ft_parseprec(list);
+        ft_parselenght(list);
         ft_parseconv(list);
+    }
     return(0);
 }
 
@@ -111,9 +114,11 @@ int ft_printf(char *string, ...)
         if(*list->str == '%')
         {
             initlist(list);
-            if (ft_strchr("discouxXp%", *list->str) != NULL) 
+            if (ft_strchr("discouxXp%", *list->str) != NULL && *list->str)
+            {
                 printoptions(list);
-            list->str++;   
+                list->str++;
+            }
         }
         else if(*list->str)
         {
