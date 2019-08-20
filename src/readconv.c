@@ -102,14 +102,14 @@ void ft_read_u(printf_list *list)
 
 void ft_read_xXp(printf_list *list)
 {
-	if (*list->str == 'p')
-	{
-			ft_dectohex(va_arg(list->va, unsigned int), list);
-			if (ft_atoi(list->strprint) != 0)
-				list->strprint = ft_strjoin("0x7fff", list->strprint);
-			else
-				list->strprint = ft_strdup("0x0");
-	}
+if (*list->str == 'p')
+    {
+            ft_dectohex(va_arg(list->va, unsigned int), list);
+            if (ft_strlen(list->strprint) > 1)
+                list->strprint = ft_strjoin("0x7fff", list->strprint);
+            else if (ft_atoi(list->strprint) == 0)
+                list->strprint = ft_strdup("0x0");
+    }
 	else if (ft_strcmp(list->lenght,"hh") == 0)
 		ft_dectohex((unsigned char)va_arg(list->va, unsigned int), list);
 	else if (ft_strcmp(list->lenght,"h") == 0)
