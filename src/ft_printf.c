@@ -27,20 +27,18 @@ void	ft_putstrf(char const *s, printf_list *list)
         ft_putcharf('\0', list); //Comme tu convertis les char en string , on avait des problemes sur certains test de char.
 }
 
-char					*ft_ftoa(double f, unsigned int prec)
+char					*ft_ftoa(long double f, unsigned int prec)
 {
 	char			*res;
 	char			*tmp;
 	long double		nb;
 	long double		dec;
 	long double		test;
-	unsigned int	size;
 
 	nb = (f < 0 ? -f : f);
     if (!(tmp = ft_itoa((intmax_t)f)))
 		return (NULL);
-	size = ft_strlen(tmp) + prec + (prec ? 1 : 0);
-	if (!(res = ft_strcat(ft_strnew(size), tmp)))
+	if (!(res = ft_strcat(ft_strnew(ft_strlen(tmp) + prec + (prec ? 1 : 0)), tmp)))
 		return (NULL);
 	free(tmp);
 	if (prec)
@@ -87,7 +85,6 @@ int initlist(printf_list *list)
     list->prec = -1;
     list->lenght = "";
     list->str++;
-
     if (*list->str)
     { 
         ft_parseoption(list);
@@ -114,7 +111,7 @@ int ft_printf(char *string, ...)
         if(*list->str == '%')
         {
             initlist(list);
-            if (ft_strchr("discouxXp%", *list->str) != NULL && *list->str)
+            if (ft_strchr("discouxXpf%", *list->str) != NULL && *list->str)
             {
                 printoptions(list);
                 list->str++;

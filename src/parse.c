@@ -41,9 +41,9 @@ void    ft_parseprec(printf_list *list)
                 list->str++;
             list->prec = 0;
         }
-        
     }
 }
+
 void    ft_parselenght(printf_list *list)
 {
     if (*list->str == 'h')

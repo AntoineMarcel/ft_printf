@@ -38,7 +38,7 @@ typedef struct		printf_list
 intmax_t		ft_pow(int n, unsigned int p);
 void	ft_putcharf(char c, printf_list *list);
 void	ft_putstrf(char const *s, printf_list *list);
-char					*ft_ftoa(double f, unsigned int prec);
+char					*ft_ftoa(long double f, unsigned int prec);
 int    ft_strcount(char *string, int c);
 void	precminl(printf_list *list);
 int initlist(printf_list *list);
