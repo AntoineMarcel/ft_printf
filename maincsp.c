@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "src/ft_printf.h"
+#include "src/printf.h"
 
 int		main(void)
 {

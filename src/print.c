@@ -62,18 +62,9 @@ void    printdiez(printf_list *list)
     }
 }
 
-int printoptions(printf_list *list)
+void	precminl(printf_list *list)
 {
-    if (ft_strchr(list->options,' ') != NULL)
-        printspace(list);
-    if (ft_strchr(list->options,'#') != NULL)
-        printdiez(list);
-    if (ft_strchr(list->options,'+') != NULL)
-        printplus(list);
-    if (ft_strchr(list->options,'-') != NULL)
-        ft_putstrf(list->strprint, list);
-    printminl(list);
-    if (ft_strchr(list->options,'-') == NULL)
-        ft_putstrf(list->strprint, list);
-    return(0);
+    if (list->minl > 2 && list->remp != ' ')
+        while(ft_strlen(list->strprint) < list->minl - 2)
+            list->strprint = ft_strjoin("0", list->strprint);
 }

@@ -19,12 +19,14 @@ SRC =	./src/ft_printf.c\
 		./src/convert.c\
 		./src/readconv.c\
 		./src/print.c\
+		./src/utils.c\
 
 OBJ= ./ft_printf.o\
 	./parse.o\
 	./convert.o\
 	./readconv.o\
 	./print.o\
+	./utils.o\
 
 OBJS = ./libft/*.o
 LIBFT= ./libft/libft.a
