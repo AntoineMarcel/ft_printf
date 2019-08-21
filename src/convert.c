@@ -21,7 +21,7 @@ void    ft_dectohex(unsigned long long int n, printf_list *list)
 {
     int debut;
 
-    debut = *list->str != 'p' ? *list->str - 23 : 'a';
+    debut = list->str[list->i] != 'p' ? list->str[list->i] - 23 : 'a';
     if (n / 16 > 0)
         ft_dectohex(n / 16, list);
     n = n % 16;

@@ -31,6 +31,7 @@ typedef struct		printf_list
     char remp;
     int read;
     char *lenght;
+    int i;
     va_list	    va;
 
 }					printf_list;

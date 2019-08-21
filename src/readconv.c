@@ -2,7 +2,7 @@
 
 void ft_read_di(printf_list *list)
 {
-    if (ft_strcmp(list->lenght,"hh") == 0)
+	if (ft_strcmp(list->lenght,"hh") == 0)
 		list->strprint = ft_itoa((char)va_arg(list->va, int));
 	else if (ft_strcmp(list->lenght, "h") == 0) 
 		list->strprint = ft_itoa((short int)va_arg(list->va, int));
@@ -48,7 +48,7 @@ void	precint(printf_list *list)
 		while (ft_strlen(list->strprint) < list->prec)
 			list->strprint = ft_strjoin("0", list->strprint);
 	}
-	if (*list->str == 'p')
+	if (list->str[list->i] == 'p')
 	{
 		if (ft_atoi(list->strprint) == 0 && list->prec == 0)
 			list->strprint = ft_strdup("0x");
@@ -108,7 +108,7 @@ void ft_read_u(printf_list *list)
 
 void ft_read_xXp(printf_list *list)
 {
-	if (*list->str == 'p')
+	if (list->str[list->i] == 'p')
 		ft_dectohex(va_arg(list->va, unsigned long int), list);
 	else if (ft_strcmp(list->lenght,"hh") == 0)
 		ft_dectohex((unsigned char)va_arg(list->va, unsigned int), list);

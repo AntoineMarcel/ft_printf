@@ -14,7 +14,7 @@ int printoptions(printf_list *list)
     printminl(list);
     if (ft_strchr(list->options,'-') == NULL)
         ft_putstrf(list->strprint, list);
-    list->str++;
+    list->i++;
     return(0);
 }
 
@@ -26,8 +26,8 @@ int initlist(printf_list *list)
     list->minl = 0;
     list->prec = -1;
     list->lenght = "";
-    list->str++;
-    if (*list->str)
+    list->i++;
+    if (list->str[list->i])
     { 
         ft_parseoption(list);
         ft_parseminl(list);
@@ -41,28 +41,31 @@ int initlist(printf_list *list)
 int ft_printf(char *string, ...)
 {
     printf_list *list;
-
+    
     list = NULL;
 	if (!(list = (printf_list*)malloc(sizeof(printf_list))))
 		return (0);
     list->str = ft_strdup(string);
     va_start (list->va, string);
     list->read = 0;
-    while(*list->str)
+    list->i = 0;
+    while(list->str[list->i])
     {
-        if(*list->str == '%')
+        if(list->str[list->i] == '%')
         {
             initlist(list);
-            if (ft_strchr("discouxXpf%", *list->str) != NULL && *list->str)
+            if (ft_strchr("discouxXpf%", list->str[list->i]) != NULL && list->str[list->i])
                 printoptions(list);
         }
-        else if(*list->str)
+        else if(list->str[list->i])
         {
-            ft_putcharf(*list->str, list);
-            list->str++;
+            ft_putcharf(list->str[list->i], list);
+            list->i++;
         }
     }
     va_end (list->va);
+    // free(list->str);
+    free(list);
     return (list->read);
 }
 
