@@ -99,6 +99,7 @@ void ft_read_o(printf_list *list)
 
 void ft_read_u(printf_list *list)
 {
+	free(list->strprint);
 	if (ft_strcmp(list->lenght,"hh") == 0)
 		list->strprint = ft_uitoa((unsigned char)va_arg(list->va, unsigned int));
 	else if (ft_strcmp(list->lenght,"h") == 0)
@@ -131,6 +132,8 @@ void ft_read_xXp(printf_list *list)
 
 void ft_read_f(printf_list *list)
 {
+
+	free(list->strprint);
 	if(list->prec <= 0)
 		list->prec = 6;
 	if (ft_strcmp(list->lenght,"L") == 0)

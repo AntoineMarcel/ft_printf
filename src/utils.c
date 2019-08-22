@@ -50,6 +50,7 @@ char					*ft_ftoa(long double f, unsigned int prec)
 	long double		nb;
 	long double		dec;
 	long double		test;
+    char *tmp2;
 
 	nb = (f < 0 ? -f : f);
     if (!(tmp = ft_itoa((intmax_t)f)))
@@ -63,7 +64,9 @@ char					*ft_ftoa(long double f, unsigned int prec)
 		dec = ft_pow(10, prec + 1) * (nb - (unsigned long)nb);
         test = ((dec / 10) - ((intmax_t)dec / 10)) * 10;
         dec = test >=5 ? (dec / 10) + 1 : dec / 10;
-		ft_strcat(res, ft_itoa((intmax_t)dec));
+        tmp2 = ft_itoa((intmax_t)dec);
+		ft_strcat(res, tmp2);
+        free(tmp2);
 	}
 	return (res);
 }
