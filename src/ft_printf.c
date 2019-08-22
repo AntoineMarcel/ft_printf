@@ -59,7 +59,6 @@ int ft_printf(char *string, ...)
             free(list->options);
             free(list->lenght);
             free(list->strprint);
-
         }
         else if(list->str[list->i])
         {

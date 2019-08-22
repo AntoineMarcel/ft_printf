@@ -33,7 +33,7 @@ void    ft_dectohex(unsigned long long int n, printf_list *list)
     {
         while(n-- > 10)
             debut++;
-        list->strprint = ft_stradd(list->strprint, convertctos(debut), 1);
+        list->strprint = ft_stradd(list->strprint, convertctos(debut), 3);
     }
     else
         list->strprint = ft_stradd(list->strprint, ft_itoa(n), 3);

@@ -4,7 +4,7 @@ int ft_parseoption(printf_list *list)
 {
     while (ft_strchr("+-#0 ",list->str[list->i]) != NULL)
     {
-        list->options = ft_stradd(list->options, convertctos(list->str[list->i]), 1);
+        list->options = ft_stradd(list->options, convertctos(list->str[list->i]), 3);
         if (list->str[list->i] == '0')
             list->remp = '0';
         list->i++;
@@ -27,14 +27,17 @@ int ft_parseminl(printf_list *list)
 
 void    ft_parseprec(printf_list *list)
 {
+    char *tmp;
+
     if (list->str[list->i] == '.')
     {
         list->i++;
         if(list->str[list->i] >= '1' && list->str[list->i] <= '9')
         {
             list->prec = ft_atoi(list->str + list->i);
-
-            list->i = list->i + ft_strlen(ft_itoa(list->prec));
+            tmp = ft_itoa(list->prec);
+            list->i = list->i + ft_strlen(tmp);
+            free(tmp);
         }
         else
         {
@@ -47,6 +50,7 @@ void    ft_parseprec(printf_list *list)
 
 void    ft_parselenght(printf_list *list)
 {
+    free(list->lenght);
     if (list->str[list->i] == 'h')
     {
         list->lenght = ft_strdup("h");
@@ -72,6 +76,8 @@ void    ft_parselenght(printf_list *list)
         list->lenght = ft_strdup("L");
         list->i++;
     }
+    else
+        list->lenght = ft_strdup("");
 }
 
 int    ft_parseconv(printf_list *list)
