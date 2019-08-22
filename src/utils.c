@@ -1,5 +1,24 @@
 #include "printf.h"
 
+char *ft_stradd(char *src, char *add, int n)
+{
+    char *tmp;
+    char *tmp2;
+
+    tmp = ft_strdup(src);
+    tmp2 = ft_strdup(add);
+    if (n == 1 || n == 3)
+        free(src);
+    if (n == 2 || n == 3)
+        free(add);
+    src = ft_strnew(ft_strlen(tmp) + ft_strlen(tmp2));
+    ft_strcat(src, tmp);
+    ft_strcat(src, tmp2);
+    free(tmp);
+    free(tmp2);
+    return (src);
+}
+
 intmax_t		ft_pow(int n, unsigned int p)
 {
 	if (!p)

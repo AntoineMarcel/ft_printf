@@ -3,7 +3,7 @@
 int main()
 {
 	char i;
-	ft_printf("%.2s is a string\n", "this");
-	printf("%.2s is a string", "this");
+	
+	ft_printf("%0d", -42);
 	return (0);
 }

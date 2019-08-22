@@ -4,7 +4,7 @@ int ft_parseoption(printf_list *list)
 {
     while (ft_strchr("+-#0 ",list->str[list->i]) != NULL)
     {
-        list->options = ft_strjoin(list->options, convertctos(list->str[list->i]));
+        list->options = ft_stradd(list->options, convertctos(list->str[list->i]), 1);
         if (list->str[list->i] == '0')
             list->remp = '0';
         list->i++;
@@ -53,7 +53,7 @@ void    ft_parselenght(printf_list *list)
         list->i++;
         if (list->str[list->i] == 'h')
         {
-            list->lenght = ft_strjoin(list->lenght, "h");
+            list->lenght = ft_stradd(list->lenght, "h", 1);
             list->i++;
         }
     }
@@ -63,7 +63,7 @@ void    ft_parselenght(printf_list *list)
         list->i++;
         if (list->str[list->i] == 'l')
         {
-            list->lenght = ft_strjoin(list->lenght, "l");
+            list->lenght = ft_stradd(list->lenght, "l", 1);
             list->i++;
         }
     } 
@@ -93,6 +93,9 @@ int    ft_parseconv(printf_list *list)
     else if (list->str[list->i] == '%')
         ft_read_perc(list);
     if (ft_strchr("xXuodi", list->str[list->i]) && ft_atoi(list->strprint) == 0 && list->prec == 0)
+    {
+        free(list->strprint);
         list->strprint = ft_strdup("");
+    }
     return (0);
 }

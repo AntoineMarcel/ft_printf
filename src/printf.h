@@ -44,7 +44,7 @@ int    ft_strcount(char *string, int c);
 void	precminl(printf_list *list);
 int initlist(printf_list *list);
 int ft_printf(char *string, ...);
-
+char *ft_stradd(char *src, char *add, int n);
 void ft_read_di(printf_list *list);
 void ft_read_s(printf_list *list);
 void ft_read_c(printf_list *list);

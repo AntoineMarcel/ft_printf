@@ -20,12 +20,12 @@ int printoptions(printf_list *list)
 
 int initlist(printf_list *list)
 {
-    list->strprint = "";
+    list->strprint = ft_strdup("");
     list->remp = ' ';
-    list->options = "";
+    list->options = ft_strdup("");
     list->minl = 0;
     list->prec = -1;
-    list->lenght = "";
+    list->lenght = ft_strdup("");
     list->i++;
     if (list->str[list->i])
     { 
@@ -56,6 +56,10 @@ int ft_printf(char *string, ...)
             initlist(list);
             if (ft_strchr("discouxXpf%", list->str[list->i]) != NULL && list->str[list->i])
                 printoptions(list);
+            free(list->options);
+            free(list->lenght);
+            free(list->strprint);
+
         }
         else if(list->str[list->i])
         {
@@ -64,9 +68,23 @@ int ft_printf(char *string, ...)
         }
     }
     va_end (list->va);
-    // free(list->str);
+    free(list->str);
     free(list);
     return (list->read);
+
+    
+    // char *test;
+    // char *tmp;
+    // test = ft_strdup("test");
+    // tmp = ft_strdup("test");
+    // free(test);
+    // test = ft_strnew(4);
+    // ft_strcat(test, tmp);
+    // ft_strcat(test, "po");
+    // ft_putendl(test);
+    // free(tmp);
+    // free(test);
+    // return (0);
 }
 
 
