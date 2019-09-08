@@ -2,8 +2,10 @@
 
 int main()
 {
-	char i;
-	
-	ft_printf("%0d", -42);
+	ft_printf("{% 03d}\n", 0);
+	printf("{% 03d}\n", 0);
+
+	ft_printf("{%+03d}\n", 0);
+	printf("{%+03d}\n", 0);
 	return (0);
 }

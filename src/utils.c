@@ -39,8 +39,8 @@ void	ft_putstrf(char const *s, printf_list *list)
     size = ft_strlen(s);
     write(1, s, size);
     list->read = list->read + size;
-    if (s[0] == '\0' && ft_strchr("c", list->str[list->i]) != NULL) // cette condition cest pour un cas precis du char avec /0.
-        ft_putcharf('\0', list); //Comme tu convertis les char en string , on avait des problemes sur certains test de char.
+    if (s[0] == '\0' && ft_strchr("c", list->str[list->i]) != NULL) 
+        ft_putcharf('\0', list);
 }
 
 char					*ft_ftoa(long double f, unsigned int prec)
