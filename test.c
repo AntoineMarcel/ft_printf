@@ -1,11 +1,8 @@
 #include "src/printf.h"
-
+#include <stdio.h>
 int main()
 {
-	ft_printf("{% 03d}\n", 0);
-	printf("{% 03d}\n", 0);
-
-	ft_printf("{%+03d}\n", 0);
-	printf("{%+03d}\n", 0);
-	return (0);
+ft_printf("%5+d\n", 42);
+printf("%5+d\n", 42);
+// ft_printf("%5+d", -42);
 }

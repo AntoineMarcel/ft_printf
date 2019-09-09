@@ -1,75 +1,101 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/09 13:41:05 by amarcel           #+#    #+#             */
+/*   Updated: 2019/09/09 13:57:11 by amarcel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
-void    printminl(printf_list *list)
+void	printminl(printf_list *list)
 {
-    char *tmp;
+	char *tmp;
 
-    list->minl = ft_strlen(list->strprint) == 0 && (ft_strchr("c", list->str[list->i]) != NULL) ? list->minl - (ft_strlen(list->strprint) + 1) : list->minl - ft_strlen(list->strprint);
-    if (list->str[list->i] == 'd' && list->prec > 0 && ft_strchr(list->options,'0') != NULL && *list->strprint != '-')
-        list->remp = ' ';
-    if (list->strprint[0] == '-' && ft_strchr(list->options,'-') == NULL && ft_strchr(list->options,' ') == NULL && list->remp == '0')
-    {
-        tmp = ft_strdup(list->strprint + 1);
-        free(list->strprint);
-        list->strprint = ft_strdup(tmp);
-        free(tmp);
-        ft_putcharf('-', list);
-    }
-    while (list->minl > 0)
-    {
-        ft_putcharf(list->remp, list);
-        list->minl--;
-    }
+	list->minl = list->minl - ft_strlen(list->strprint);
+	if (ft_strlen(list->strprint) == 0 && (ft_strchr("c",\
+					list->str[list->i]) != NULL))
+		list->minl = list->minl - 1;
+	if (list->str[list->i] == 'd' && list->prec > 0 && ft_strchr(list->options,\
+				'0') != NULL && *list->strprint != '-')
+		list->remp = ' ';
+	if (list->strprint[0] == '-' && ft_strchr(list->options, '-') == NULL &&\
+			ft_strchr(list->options, ' ') == NULL && list->remp == '0')
+	{
+		tmp = ft_strdup(list->strprint + 1);
+		free(list->strprint);
+		list->strprint = ft_strdup(tmp);
+		free(tmp);
+		ft_putcharf('-', list);
+	}
+	while (list->minl > 0)
+	{
+		ft_putcharf(list->remp, list);
+		list->minl--;
+	}
 }
 
-void    printplus(printf_list *list)
+void	printplus(printf_list *list)
 {
-    if(ft_atoi(list->strprint) >= 0)
-    {
-        if (list->prec > 0 && ft_strchr(list->options,'-') == NULL)
-            list->strprint = ft_stradd("+", list->strprint, 2);
-        else
-        {
-            ft_putcharf('+', list); 
-            list->minl--;
-        }
-    }
+	if (ft_atoi(list->strprint) >= 0)
+	{
+		if (list->prec > 0 && ft_strchr(list->options, '-') == NULL)
+			list->strprint = ft_stradd("+", list->strprint, 2);
+		else
+		{
+			ft_putcharf('+', list);
+			list->minl--;
+		}
+	}
 }
 
-void    printspace(printf_list *list)
+void	printspace(printf_list *list)
 {
-    if ((ft_strcount(list->options, ' ') >= 1)  && (ft_strchr("di", list->str[list->i]) != NULL) && (ft_strchr(list->options,'+') == NULL) && (ft_strchr(list->strprint,'-') == NULL))
-    {
-        ft_putcharf(' ', list);
-         list->minl--;
-    }
+	if ((ft_strcount(list->options, ' ') >= 1) &&\
+			(ft_strchr(list->strprint, '-') == NULL))
+	{
+		if ((ft_strchr("di", list->str[list->i]) != NULL) &&\
+				(ft_strchr(list->options, '+') == NULL))
+		{
+			ft_putcharf(' ', list);
+			list->minl--;
+		}
+	}
 }
 
-void    printdiez(printf_list *list)
+void	printdiez(printf_list *list)
 {
-    char *tmp;
-    int i;
+	char	*tmp;
+	int		i;
 
-    i = 0;
-    tmp = ft_strdup(list->strprint);
-    while(tmp[i] && !(tmp[i] >= '0' && tmp[i] <= '9'))
-        i++;
-    if(ft_strchr("oxXp",list->str[list->i]) != NULL && ((ft_atoi(tmp + i) >= 0) || i > 0))
-    {
-        if (ft_strchr("xXp",list->str[list->i]) != NULL && ((ft_atoi(tmp + i) > 0) || i > 0))
-        {
-            precminl(list);
-            list->strprint = ft_stradd((list->str[list->i] != 'X' ? "0x" : "0X"), list->strprint, 2);
-        }
-        else if (ft_strchr("o",list->str[list->i]) != NULL && list->strprint[0] != '0')
-            list->strprint = ft_stradd("0", list->strprint, 2);
-    }
-    free(tmp);
+	i = 0;
+	tmp = ft_strdup(list->strprint);
+	while (tmp[i] && !(tmp[i] >= '0' && tmp[i] <= '9'))
+		i++;
+	if (ft_strchr("oxXp", list->str[list->i]) != NULL &&\
+			((ft_atoi(tmp + i) >= 0) || i > 0))
+	{
+		if (ft_strchr("xXp", list->str[list->i]) != NULL &&\
+				((ft_atoi(tmp + i) > 0) || i > 0))
+		{
+			precminl(list);
+			list->strprint = ft_stradd((list->str[list->i] !=\
+						'X' ? "0x" : "0X"), list->strprint, 2);
+		}
+		else if (ft_strchr("o", list->str[list->i]) != NULL &&\
+				list->strprint[0] != '0')
+			list->strprint = ft_stradd("0", list->strprint, 2);
+	}
+	free(tmp);
 }
 
 void	precminl(printf_list *list)
 {
-    if (list->minl > 2 && list->remp != ' ')
-        while(ft_strlen(list->strprint) < list->minl - 2)
-            list->strprint = ft_stradd("0", list->strprint, 2);
+	if (list->minl > 2 && list->remp != ' ')
+		while (ft_strlen(list->strprint) < list->minl - 2)
+			list->strprint = ft_stradd("0", list->strprint, 2);
 }

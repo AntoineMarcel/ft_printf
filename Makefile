@@ -18,6 +18,7 @@ SRC =	./src/ft_printf.c\
 		./src/parse.c\
 		./src/convert.c\
 		./src/readconv.c\
+		./src/readconv2.c\
 		./src/print.c\
 		./src/utils.c\
 
@@ -25,6 +26,7 @@ OBJ= ./ft_printf.o\
 	./parse.o\
 	./convert.o\
 	./readconv.o\
+	./readconv2.o\
 	./print.o\
 	./utils.o\
 
