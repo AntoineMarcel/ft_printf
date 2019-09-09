@@ -2,7 +2,6 @@
 #include <stdio.h>
 int main()
 {
-ft_printf("%5+d\n", 42);
-printf("%5+d\n", 42);
-// ft_printf("%5+d", -42);
+ft_printf("@main_ftprintf: %33..1..#0d\\n     \n", 256);
+printf("@main_ftprintf: %33..1..#0d\\n", 256);
 }

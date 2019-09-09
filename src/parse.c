@@ -14,16 +14,16 @@
 
 int		ft_parseoption(printf_list *list)
 {
-	while (ft_strchr("+-#0 ", list->str[list->i]) != NULL && list->str[list->i])
-	{
-		list->options = ft_stradd(list->options,\
-				convertctos(list->str[list->i]), 3);
-		if (list->str[list->i] == '0')
-			list->remp = '0';
-		list->i++;
-	}
-	if (list->remp == '0' && ft_strchr(list->options, '-') != NULL)
-		list->remp = ' ';
+		while (ft_strchr("+-#0 ", list->str[list->i]) != NULL && list->str[list->i])
+		{
+			list->options = ft_stradd(list->options,\
+					convertctos(list->str[list->i]), 3);
+			if (list->str[list->i] == '0')
+				list->remp = '0';
+			list->i++;
+		}
+		if (list->remp == '0' && ft_strchr(list->options, '-') != NULL)
+			list->remp = ' ';
 	return (0);
 }
 
@@ -44,7 +44,8 @@ void	ft_parseprec(printf_list *list)
 
 	if (list->str[list->i] == '.')
 	{
-		list->i++;
+		while (list->str[list->i] == '.')
+			list->i++;
 		if (list->str[list->i] >= '1' && list->str[list->i] <= '9')
 		{
 			list->prec = ft_atoi(list->str + list->i);

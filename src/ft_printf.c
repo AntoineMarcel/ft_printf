@@ -29,6 +29,24 @@ int		printoptions(printf_list *list)
 	return (0);
 }
 
+void	parse(printf_list *list)
+{
+	int i = 0;
+	while(i < 4 || (ft_strchr("+-#0 .Llh", list->str[list->i]) != NULL && list->str[list->i]))
+	{
+		if (ft_strchr("+-#0 ", list->str[list->i]) != NULL)
+			ft_parseoption(list);
+		else if (list->str[list->i] >= '0' && list->str[list->i] <= '9')
+			ft_parseminl(list);
+		else if (list->str[list->i] == '.')
+			ft_parseprec(list);
+		else if (ft_strchr("Llh ", list->str[list->i]) != NULL)
+			ft_parselenght(list);
+		i++;
+	}
+	ft_parseconv(list);
+}
+
 int		initlist(printf_list *list)
 {
 	list->strprint = ft_strdup("");
@@ -39,13 +57,7 @@ int		initlist(printf_list *list)
 	list->lenght = ft_strdup("");
 	list->i++;
 	if (list->str[list->i])
-	{
-		ft_parseoption(list);
-		ft_parseminl(list);
-		ft_parseprec(list);
-		ft_parselenght(list);
-		ft_parseconv(list);
-	}
+		parse(list);
 	if (ft_strchr("discouxXpf%", list->str[list->i]) != NULL &&\
 			list->str[list->i])
 		printoptions(list);

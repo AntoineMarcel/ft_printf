@@ -43,7 +43,7 @@ void	printplus(printf_list *list)
 {
 	if (ft_atoi(list->strprint) >= 0)
 	{
-		if (list->prec > 0 && ft_strchr(list->options, '-') == NULL)
+		if ((list->prec > 0 && ft_strchr(list->options, '-') == NULL) || (list->minl > ft_strlen(list->strprint) && ft_strchr(list->options, '0') == NULL))
 			list->strprint = ft_stradd("+", list->strprint, 2);
 		else
 		{
