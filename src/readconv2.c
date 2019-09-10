@@ -26,7 +26,7 @@ char	*ft_cut(char *s, size_t n)
 	return (s);
 }
 
-void	ft_read_s(printf_list *list)
+void	ft_read_s(t_printf_list *list)
 {
 	char *tmp;
 
@@ -42,7 +42,7 @@ void	ft_read_s(printf_list *list)
 		list->strprint = ft_cut(list->strprint, list->prec);
 }
 
-void	ft_read_f(printf_list *list)
+void	ft_read_f(t_printf_list *list)
 {
 	free(list->strprint);
 	if (list->prec <= 0)
@@ -53,13 +53,13 @@ void	ft_read_f(printf_list *list)
 		list->strprint = ft_ftoa(va_arg(list->va, double), list->prec);
 }
 
-void	ft_read_perc(printf_list *list)
+void	ft_read_perc(t_printf_list *list)
 {
 	free(list->strprint);
 	list->strprint = ft_strdup("%");
 }
 
-void	ft_read_c(printf_list *list)
+void	ft_read_c(t_printf_list *list)
 {
 	free(list->strprint);
 	list->strprint = convertctos(va_arg(list->va, int));

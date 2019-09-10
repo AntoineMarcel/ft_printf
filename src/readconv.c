@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-void	precint(printf_list *list)
+void	precint(t_printf_list *list)
 {
 	if (list->prec > 0)
 	{
@@ -28,7 +28,7 @@ void	precint(printf_list *list)
 	}
 }
 
-void	ft_read_di(printf_list *list)
+void	ft_read_di(t_printf_list *list)
 {
 	free(list->strprint);
 	if (ft_strcmp(list->lenght, "hh") == 0)
@@ -56,7 +56,7 @@ void	ft_read_di(printf_list *list)
 	}
 }
 
-void	ft_read_o(printf_list *list)
+void	ft_read_o(t_printf_list *list)
 {
 	if (ft_strcmp(list->lenght, "hh") == 0)
 		ft_dectoct((unsigned char)va_arg(list->va, unsigned int), list);
@@ -71,7 +71,7 @@ void	ft_read_o(printf_list *list)
 	precint(list);
 }
 
-void	ft_read_u(printf_list *list)
+void	ft_read_u(t_printf_list *list)
 {
 	free(list->strprint);
 	if (ft_strcmp(list->lenght, "hh") == 0)
@@ -89,7 +89,7 @@ void	ft_read_u(printf_list *list)
 	precint(list);
 }
 
-void	ft_read_xp(printf_list *list)
+void	ft_read_xp(t_printf_list *list)
 {
 	if (list->str[list->i] == 'p')
 		ft_dectohex(va_arg(list->va, unsigned long int), list);

@@ -6,13 +6,13 @@
 /*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:41:05 by amarcel           #+#    #+#             */
-/*   Updated: 2019/09/09 13:57:11 by amarcel          ###   ########.fr       */
+/*   Updated: 2019/09/10 12:05:04 by amarcel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	printminl(printf_list *list)
+void	printminl(t_printf_list *list)
 {
 	char *tmp;
 
@@ -39,11 +39,13 @@ void	printminl(printf_list *list)
 	}
 }
 
-void	printplus(printf_list *list)
+void	printplus(t_printf_list *list)
 {
 	if (ft_atoi(list->strprint) >= 0)
 	{
-		if ((list->prec > 0 && ft_strchr(list->options, '-') == NULL) || (list->minl > ft_strlen(list->strprint) && ft_strchr(list->options, '0') == NULL))
+		if ((list->prec > 0 && ft_strchr(list->options, '-') ==\
+					NULL) || (list->minl > ft_strlen(list->strprint) &&\
+						ft_strchr(list->options, '0') == NULL))
 			list->strprint = ft_stradd("+", list->strprint, 2);
 		else
 		{
@@ -53,7 +55,7 @@ void	printplus(printf_list *list)
 	}
 }
 
-void	printspace(printf_list *list)
+void	printspace(t_printf_list *list)
 {
 	if ((ft_strcount(list->options, ' ') >= 1) &&\
 			(ft_strchr(list->strprint, '-') == NULL))
@@ -67,7 +69,7 @@ void	printspace(printf_list *list)
 	}
 }
 
-void	printdiez(printf_list *list)
+void	printdiez(t_printf_list *list)
 {
 	char	*tmp;
 	int		i;
@@ -93,7 +95,7 @@ void	printdiez(printf_list *list)
 	free(tmp);
 }
 
-void	precminl(printf_list *list)
+void	precminl(t_printf_list *list)
 {
 	if (list->minl > 2 && list->remp != ' ')
 		while (ft_strlen(list->strprint) < list->minl - 2)

@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-void	ft_dectoct(unsigned long long int n, printf_list *list)
+void	ft_dectoct(unsigned long long int n, t_printf_list *list)
 {
 	if (n / 8 > 0)
 		ft_dectoct(n / 8, list);
@@ -32,7 +32,7 @@ char	*convertctos(char c)
 	return (string);
 }
 
-void	ft_dectohex(unsigned long long int n, printf_list *list)
+void	ft_dectohex(unsigned long long int n, t_printf_list *list)
 {
 	int debut;
 

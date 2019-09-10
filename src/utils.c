@@ -38,13 +38,13 @@ intmax_t	ft_pow(int n, unsigned int p)
 	return (n * ft_pow(n, --p));
 }
 
-void		ft_putcharf(char c, printf_list *list)
+void		ft_putcharf(char c, t_printf_list *list)
 {
 	write(1, &c, 1);
 	list->read = list->read + 1;
 }
 
-void		ft_putstrf(char const *s, printf_list *list)
+void		ft_putstrf(char const *s, t_printf_list *list)
 {
 	size_t size;
 

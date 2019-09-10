@@ -6,28 +6,29 @@
 /*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:20:39 by amarcel           #+#    #+#             */
-/*   Updated: 2019/09/09 13:40:57 by amarcel          ###   ########.fr       */
+/*   Updated: 2019/09/10 12:04:39 by amarcel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		ft_parseoption(printf_list *list)
+int		ft_parseoption(t_printf_list *list)
 {
-		while (ft_strchr("+-#0 ", list->str[list->i]) != NULL && list->str[list->i])
-		{
-			list->options = ft_stradd(list->options,\
-					convertctos(list->str[list->i]), 3);
-			if (list->str[list->i] == '0')
-				list->remp = '0';
-			list->i++;
-		}
-		if (list->remp == '0' && ft_strchr(list->options, '-') != NULL)
-			list->remp = ' ';
+	while (ft_strchr("+-#0 ", list->str[list->i]) != NULL && list->str[list->i])
+	{
+		list->options = ft_stradd(list->options,\
+				convertctos(list->str[list->i]), 3);
+		if (list->str[list->i] == '0' && ft_strchr("discouxXpf%",\
+					list->str[list->i + 1]) == NULL)
+			list->remp = '0';
+		list->i++;
+	}
+	if (list->remp == '0' && ft_strchr(list->options, '-') != NULL)
+		list->remp = ' ';
 	return (0);
 }
 
-int		ft_parseminl(printf_list *list)
+int		ft_parseminl(t_printf_list *list)
 {
 	if (list->str[list->i] >= '0' && list->str[list->i] <= '9')
 	{
@@ -38,7 +39,7 @@ int		ft_parseminl(printf_list *list)
 	return (0);
 }
 
-void	ft_parseprec(printf_list *list)
+void	ft_parseprec(t_printf_list *list)
 {
 	char *tmp;
 
@@ -62,7 +63,7 @@ void	ft_parseprec(printf_list *list)
 	}
 }
 
-void	ft_parselenght(printf_list *list)
+void	ft_parselenght(t_printf_list *list)
 {
 	free(list->lenght);
 	if (list->str[list->i] == 'h')
@@ -84,7 +85,7 @@ void	ft_parselenght(printf_list *list)
 	list->i = list->i + ft_strlen(list->lenght);
 }
 
-int		ft_parseconv(printf_list *list)
+int		ft_parseconv(t_printf_list *list)
 {
 	if (list->str[list->i] == 'd' || list->str[list->i] == 'i')
 		ft_read_di(list);
@@ -103,7 +104,8 @@ int		ft_parseconv(printf_list *list)
 		ft_read_f(list);
 	else if (list->str[list->i] == '%')
 		ft_read_perc(list);
-	if (ft_strchr("xXuodi", list->str[list->i]) != NULL && ft_atoi(list->strprint) ==\
+	if (ft_strchr("xXuodi", list->str[list->i]) != NULL &&\
+			ft_atoi(list->strprint) ==\
 			0 && list->prec == 0)
 	{
 		free(list->strprint);

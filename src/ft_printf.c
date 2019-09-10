@@ -6,13 +6,13 @@
 /*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:05:36 by amarcel           #+#    #+#             */
-/*   Updated: 2019/09/09 13:11:35 by amarcel          ###   ########.fr       */
+/*   Updated: 2019/09/10 12:04:08 by amarcel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		printoptions(printf_list *list)
+int		printoptions(t_printf_list *list)
 {
 	if (ft_strchr(list->options, ' ') != NULL)
 		printspace(list);
@@ -29,10 +29,13 @@ int		printoptions(printf_list *list)
 	return (0);
 }
 
-void	parse(printf_list *list)
+void	parse(t_printf_list *list)
 {
-	int i = 0;
-	while(i < 4 || (ft_strchr("+-#0 .Llh", list->str[list->i]) != NULL && list->str[list->i]))
+	int i;
+
+	i = 0;
+	while (i < 4 || (ft_strchr("+-#0 .Llh", list->str[list->i]) !=\
+				NULL && list->str[list->i]))
 	{
 		if (ft_strchr("+-#0 ", list->str[list->i]) != NULL)
 			ft_parseoption(list);
@@ -47,7 +50,7 @@ void	parse(printf_list *list)
 	ft_parseconv(list);
 }
 
-int		initlist(printf_list *list)
+int		initlist(t_printf_list *list)
 {
 	list->strprint = ft_strdup("");
 	list->remp = ' ';
@@ -66,10 +69,10 @@ int		initlist(printf_list *list)
 
 int		ft_printf(char *string, ...)
 {
-	printf_list *list;
+	t_printf_list *list;
 
 	list = NULL;
-	if (!(list = (printf_list*)malloc(sizeof(printf_list))))
+	if (!(list = (t_printf_list*)malloc(sizeof(t_printf_list))))
 		return (0);
 	list->str = ft_strdup(string);
 	va_start(list->va, string);
