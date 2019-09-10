@@ -47,6 +47,8 @@ void	parse(t_printf_list *list)
 			ft_parselenght(list);
 		i++;
 	}
+	if (list->prec > 0)
+		list->remp = ' ';
 	ft_parseconv(list);
 }
 

@@ -30,6 +30,8 @@ void	precint(t_printf_list *list)
 
 void	ft_read_di(t_printf_list *list)
 {
+	int size;
+
 	free(list->strprint);
 	if (ft_strcmp(list->lenght, "hh") == 0)
 		list->strprint = ft_itoa((char)va_arg(list->va, int));
@@ -41,7 +43,8 @@ void	ft_read_di(t_printf_list *list)
 		list->strprint = ft_itoa(va_arg(list->va, long int));
 	else
 		list->strprint = ft_itoa(va_arg(list->va, int));
-	if (list->prec > 0 && ft_strlen(list->strprint) < list->prec)
+	size = ft_atoi(list->strprint) < 0 ? ft_strlen(list->strprint) - 1 : ft_strlen(list->strprint);
+	if (list->prec > 0 && size < list->prec)
 	{
 		if (ft_atoi(list->strprint) < 0)
 		{
