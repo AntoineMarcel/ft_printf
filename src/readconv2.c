@@ -6,7 +6,7 @@
 /*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 14:07:45 by amarcel           #+#    #+#             */
-/*   Updated: 2019/09/10 16:59:08 by abelkhay         ###   ########.fr       */
+/*   Updated: 2019/09/25 14:38:21 by amarcel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	ft_read_s(t_printf_list *list)
 		list->strprint = ft_cut(list->strprint, list->prec);
 }
 
-int	ft_read_f(t_printf_list *list)
+int		ft_read_f(t_printf_list *list)
 {
-	char	*tmp;
-	double f;
-	
+	char		*tmp;
+	double		f;
+
 	free(list->strprint);
 	f = 0.0;
 	if (list->prec < 0)

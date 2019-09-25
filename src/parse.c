@@ -6,7 +6,7 @@
 /*   By: abelkhay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 16:16:53 by abelkhay          #+#    #+#             */
-/*   Updated: 2019/09/10 16:16:55 by abelkhay         ###   ########.fr       */
+/*   Updated: 2019/09/25 14:38:54 by amarcel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,5 @@ int		ft_parseconv(t_printf_list *list)
 		free(list->strprint);
 		list->strprint = ft_strdup("");
 	}
-	// printf("TESTESTTS");
 	return (0);
 }

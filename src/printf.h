@@ -6,7 +6,7 @@
 /*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 13:58:14 by amarcel           #+#    #+#             */
-/*   Updated: 2019/09/10 11:59:30 by amarcel          ###   ########.fr       */
+/*   Updated: 2019/09/25 14:39:54 by amarcel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 #include <stdlib.h>
 #include "../libft/libft.h"
 
-
-
-// A SUPP
-#include <stdio.h>
 typedef	struct		s_printf_list
 {
 	char		*str;
@@ -35,7 +31,7 @@ typedef	struct		s_printf_list
 	va_list		va;
 }					t_printf_list;
 
-int		checkindf(double f, t_printf_list *list);
+int					checkindf(double f, t_printf_list *list);
 intmax_t			ft_pow(int n, unsigned int p);
 void				ft_putcharf(char c, t_printf_list *list);
 void				ft_putstrf(char const *s, t_printf_list *list);

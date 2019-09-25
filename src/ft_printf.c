@@ -6,7 +6,7 @@
 /*   By: abelkhay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 16:16:29 by abelkhay          #+#    #+#             */
-/*   Updated: 2019/09/10 16:16:35 by abelkhay         ###   ########.fr       */
+/*   Updated: 2019/09/25 14:39:32 by amarcel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int		checkindf(double f, t_printf_list *list)
 {
-	if (f == +1.0/0.0)
+	if (f == +1.0 / 0.0)
 	{
 		list->strprint = ft_strdup("inf");
 		return (0);
 	}
-	if (f == -1.0/0.0)
+	if (f == -1.0 / 0.0)
 	{
 		list->strprint = ft_strdup("-inf");
 		return (0);
