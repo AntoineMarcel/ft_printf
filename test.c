@@ -1,7 +1,13 @@
 #include "src/printf.h"
 #include <stdio.h>
+#include <limits.h>
+#include <math.h>
+
 int main()
 {
-ft_printf("@main_ftprintf: %33..1..#0x\\n     \n", 256);
-printf("@main_ftprintf: %33..1..#0x\\n", 256);
+	double f = INFINITY;
+	double mf = -INFINITY;
+	double nf = f - f;
+	printf("%f %f %f %s\n", f, mf, nf, "test");
+	ft_printf("%f %f %f %s\n", f, mf, nf, "Test");
 }

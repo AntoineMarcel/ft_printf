@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abelkhay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 13:05:36 by amarcel           #+#    #+#             */
-/*   Updated: 2019/09/10 12:04:08 by amarcel          ###   ########.fr       */
+/*   Created: 2019/09/10 16:16:29 by abelkhay          #+#    #+#             */
+/*   Updated: 2019/09/10 16:16:35 by abelkhay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+int		checkindf(double f, t_printf_list *list)
+{
+	if (f == +1.0/0.0)
+	{
+		list->strprint = ft_strdup("inf");
+		return (0);
+	}
+	if (f == -1.0/0.0)
+	{
+		list->strprint = ft_strdup("-inf");
+		return (0);
+	}
+	if (f != f)
+	{
+		list->strprint = ft_strdup("nan");
+		return (0);
+	}
+	return (1);
+}
 
 int		printoptions(t_printf_list *list)
 {

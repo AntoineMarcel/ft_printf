@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abelkhay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 13:41:05 by amarcel           #+#    #+#             */
-/*   Updated: 2019/09/10 12:05:04 by amarcel          ###   ########.fr       */
+/*   Created: 2019/09/10 16:15:39 by abelkhay          #+#    #+#             */
+/*   Updated: 2019/09/10 16:15:52 by abelkhay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	printdiez(t_printf_list *list)
 	while (tmp[i] && !(tmp[i] >= '0' && tmp[i] <= '9'))
 		i++;
 	if (ft_strchr("oxXp", list->str[list->i]) != NULL &&\
-			((ft_atoi(tmp + i) >= 0) || i > 0))
+			((ft_atoi(tmp + i) >= 0) || i > 0 || tmp[0]))
 	{
 		if (ft_strchr("xXp", list->str[list->i]) != NULL &&\
 				((ft_atoi(tmp + i) > 0) || i > 0))

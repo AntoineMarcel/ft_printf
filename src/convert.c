@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abelkhay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 13:12:11 by amarcel           #+#    #+#             */
-/*   Updated: 2019/09/09 14:31:01 by amarcel          ###   ########.fr       */
+/*   Created: 2019/09/10 16:16:07 by abelkhay          #+#    #+#             */
+/*   Updated: 2019/09/10 16:33:43 by abelkhay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,21 @@ char	*ft_ftoa(long double f, unsigned int prec)
 		free(tmp2);
 	}
 	return (res);
+}
+
+void	ft_read_xp(t_printf_list *list)
+{
+	if (list->str[list->i] == 'p')
+		ft_dectohex(va_arg(list->va, unsigned long int), list);
+	else if (ft_strcmp(list->lenght, "hh") == 0)
+		ft_dectohex((unsigned char)va_arg(list->va, unsigned int), list);
+	else if (ft_strcmp(list->lenght, "h") == 0)
+		ft_dectohex((unsigned short int)va_arg(list->va, unsigned int), list);
+	else if (ft_strcmp(list->lenght, "ll") == 0)
+		ft_dectohex(va_arg(list->va, unsigned long long int), list);
+	else if (ft_strcmp(list->lenght, "l") == 0)
+		ft_dectohex(va_arg(list->va, unsigned long int), list);
+	else
+		ft_dectohex(va_arg(list->va, unsigned int), list);
+	precint(list);
 }

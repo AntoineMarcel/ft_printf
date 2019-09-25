@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarcel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abelkhay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 13:20:39 by amarcel           #+#    #+#             */
-/*   Updated: 2019/09/10 12:04:39 by amarcel          ###   ########.fr       */
+/*   Created: 2019/09/10 16:16:53 by abelkhay          #+#    #+#             */
+/*   Updated: 2019/09/10 16:16:55 by abelkhay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ int		ft_parseconv(t_printf_list *list)
 		free(list->strprint);
 		list->strprint = ft_strdup("");
 	}
+	// printf("TESTESTTS");
 	return (0);
 }

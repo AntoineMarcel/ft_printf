@@ -6,13 +6,13 @@
 #    By: amarcel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/05 07:59:40 by amarcel           #+#    #+#              #
-#    Updated: 2019/07/05 07:59:42 by amarcel          ###   ########.fr        #
+#    Updated: 2019/09/10 17:03:05 by abelkhay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC= gcc
-#CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 SRC =	./src/ft_printf.c\
 		./src/parse.c\
@@ -38,7 +38,7 @@ all: $(NAME)
 $(NAME): $(SRC)
 		make -C ./libft/
 		cp libft/libft.a ./$(NAME)
-		gcc -c $(SRC)
+		gcc -c $(SRC) $(CFLAGS)
 		ar rc $(NAME) $(OBJ) $(OBJS)
 		ranlib $(NAME)
 
